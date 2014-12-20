@@ -4,11 +4,11 @@ puis openGL plus tard pour une version 3d
 
 Auteur du projet : Tendry
 
-#################COMMENT LANCER LE PROJET##############################################
+###############COMMENT LANCER LE PROJET##################
 Normalement le dépôt devrait contenir l'exécutable final sur Windows OU Linux
 dans bin/AudioRampage ou bin/AudioRampage.exe
 
 SI NON :
 pour compiler le projet juste aller dans src et faire "make"
 les exécutables correspondant à votre système devraient se trouver dans le dossier bin
-#######################################################################################
+###########################################################
