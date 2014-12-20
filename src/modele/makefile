@@ -1,0 +1,33 @@
+########################################
+#VARIABLES DE COMPILATION
+########################################
+
+#Sous dossier ou sont les fichiers .c 
+SOURCE_FOLDER=source
+
+#Recherche de tous les fichiers .c du sous dossier
+SRC= $(wildcard $(SOURCE_FOLDER)/*.c)
+
+#Création de la liste des dépendances (.o)
+LST= $(foreach one, $(SRC), $(BUILD_TARGET)/$(one))
+OBJ= $(LST:.c=.o)
+
+#Cible ou sont stocker les .o
+BUILD_TARGET=../$(BUILD_DIR)
+
+########################################
+#COMMANDES D'EXECUTION
+########################################
+
+#Création des fichiers .o
+all: 		 								$(EXEC)
+
+#Pour créer les .o du dossier de destination on a besoin des fichiers .c du sous dossier
+$(EXEC):	 								$(OBJ)
+
+#Procédure simple de compilation .c -> .o prise en charge des dossiers d'arrivée/départ
+$(BUILD_TARGET)/$(SOURCE_FOLDER)/%.o: 		$(SOURCE_FOLDER)/%.c
+											@echo ----------Compilation----------
+											@echo $<
+	 	 	 								@$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDEPATH) $(LIBINCLUDEPATH)
+	 	 	 								@echo --------------END--------------
