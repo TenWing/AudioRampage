@@ -8,12 +8,24 @@
 // ###########################
 // INCLUSIONS
 #include <personnage.h>
+#include <vector>
 // ###########################
 
 // Code source du constructeur
 Personnage::Personnage() : vie(3)
 {
 	// par défaut la vie = 3 (cas IA)
+
+	// Allocation du vecteur
+	cibles = std::vector<Personnage*>();
+}
+
+Personnage::Personnage(int vie) : vie(vie)
+{
+	// Attribue la vie au personnage
+
+	// Allocation du vecteur
+	cibles = std::vector<Personnage*>();
 }
 
 // Code source du destructeur par défaut

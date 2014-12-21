@@ -8,6 +8,11 @@
 #ifndef PERSONNAGE_H
 #define PERSONNAGE_H
 
+// ###################################
+// INCLUSIONS
+#include <vector>
+// ###################################
+
 /**
 * \brief	un personnage dans le jeu peut être ou le joueur
 			ou un bot qui attaque le joueur
@@ -24,9 +29,20 @@ class Personnage
 		Personnage();
 
 		/**
+		* \brief 	construit un personage et lui définit une vie
+		* \param	vie la vie attribuée
+		* \author	Tendry
+		*/
+		Personnage(int vie);
+
+		/**
 		* \brief	destructeur par défaut
 		*/
 		~Personnage();
+
+		// Fonction pertinentes
+		// #########################################
+		// GETTERS / SETTERS
 
 		/**
 		* \brief	retourne la vie du personnage
@@ -48,6 +64,15 @@ class Personnage
 		* \brief 	la santé du personnage
 		*/
 		int vie;
+
+		/**
+		* \brief 	un tableau dynamique de cibles nécessaire pour
+					une attaque sur d'autres personnages
+		* \details	utilisation d'un vecteur car on effectuera surtout 
+					des opérations d'ajout et de suppression à la fin
+					mais aussi d'accès à partir d'un indice
+		*/
+		std::vector<Personnage*> cibles;
 };
 
 #endif

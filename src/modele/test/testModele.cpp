@@ -19,5 +19,8 @@
 int main()
 {
    	std::cout << "YOLO" << std::endl;
+   	Modele modele;
+
+   	Personnage personnage;
     return 0;
 }
