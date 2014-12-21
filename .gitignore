@@ -2,3 +2,5 @@
 bin/AudioRampage
 bin/AudioRampage.exe
 build/source/*.o
+src/modele/test/testModele
+src/modele/test/*.o

@@ -6,11 +6,11 @@
 SOURCE_FOLDER=source
 
 #Recherche de tous les fichiers .c du sous dossier
-SRC= $(wildcard $(SOURCE_FOLDER)/*.c)
+SRC= $(wildcard $(SOURCE_FOLDER)/*.cpp)
 
 #Création de la liste des dépendances (.o)
 LST= $(foreach one, $(SRC), $(BUILD_TARGET)/$(one))
-OBJ= $(LST:.c=.o)
+OBJ= $(LST:.cpp=.o)
 
 #Cible ou sont stocker les .o
 BUILD_TARGET=../$(BUILD_DIR)
@@ -26,7 +26,7 @@ all: 		 								$(EXEC)
 $(EXEC):	 								$(OBJ)
 
 #Procédure simple de compilation .c -> .o prise en charge des dossiers d'arrivée/départ
-$(BUILD_TARGET)/$(SOURCE_FOLDER)/%.o: 		$(SOURCE_FOLDER)/%.c
+$(BUILD_TARGET)/$(SOURCE_FOLDER)/%.o: 		$(SOURCE_FOLDER)/%.cpp
 											@echo ----------Compilation----------
 											@echo $<
 	 	 	 								@$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDEPATH) $(LIBINCLUDEPATH)

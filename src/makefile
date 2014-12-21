@@ -3,7 +3,7 @@
 ##############################
 
 #Compilateur
-export CC=gcc
+export CC=g++
 
 #Options de compilation des .c
 export CFLAGS=-Wall
