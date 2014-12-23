@@ -20,9 +20,10 @@ all: 		 				$(TARGET_FOLDER)/$(EXEC)
 
 #Listage de tous les fichiers objets du sous dossier source
 $(TARGET_FOLDER)/$(EXEC):	$(OBJ)
-							@echo ----------LINKAGE----------
+							@echo \\\\\\\\LINKAGE////////
+							@echo $(EXEC)
 			 				@$(CC) -o $@ $^ $(LDFLAGS) $(LIBINCLUDEPATH) 
-			 				@echo ------------END------------
+							@echo \\\\\\\\\\END//////////
 
 #efface TOUT les .o et exécutables du sous dossier source
 ifeq ($(OS),Windows_NT)

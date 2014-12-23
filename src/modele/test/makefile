@@ -9,7 +9,13 @@ CC=g++
 CFLAGS=-Wall
 
 #Nom de l'executable final
-EXEC=testModele
+#cas windows
+ifeq ($(OS),Windows_NT)
+	EXEC=testModele.exe
+else
+#cas linux
+	EXEC=testModele
+endif
 
 #Noms des dossiers dont le modèle a besoin pour compiler
 SOURCE_FOLDER = ../source
@@ -49,9 +55,10 @@ all: 					$(EXEC)
 
 #construction des .o de test si c'est pas déja fais
 $(EXEC):				$(OBJ) $(MAIN)
-						@echo ----------LINKAGE----------
+						@echo \\\\\\\\LINKAGE////////
+						@echo $(EXEC)
 						@$(CC) -o $@ $^ $(LDFLAGS) 
-						@echo ------------END------------
+						@echo \\\\\\\\\\END//////////
 
 #procédure .c -> .o
 %.o: 					%.cpp
@@ -69,11 +76,11 @@ $(BUILD_DIR)/%.o: 		$(SOURCE_FOLDER)/%.cpp
 #Cas Windows
 ifeq ($(OS),Windows_NT)
 clean:
-						@-del $(EXEC).o 
+						@-del $(MAIN)
 else
 #Cas Linux	
 clean:
-						@-rm -rf $(EXEC).o
+						@-rm -rf $(MAIN)
 endif						
 
 #pour lancer l'exécutable final

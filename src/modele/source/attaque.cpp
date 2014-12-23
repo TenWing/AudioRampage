@@ -8,10 +8,11 @@
 // ###########################
 // INCLUSIONS
 #include <attaque.h>
+#include <type.h>
 // ###########################
 
 // Source du constructeur par défaut
-Attaque::Attaque()
+Attaque::Attaque() : type(MELEE), degats(0)
 {
 
 }
