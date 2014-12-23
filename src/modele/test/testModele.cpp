@@ -19,8 +19,15 @@
 int main()
 {
    	std::cout << "YOLO" << std::endl;
-   	Modele modele;
+   	Personnage tendry(10), olivetti(5);
 
-   	Personnage personnage;
+   	std::cout << "Tendry a " << tendry.getVie() << std::endl;
+   	std::cout << "olivetti a " << olivetti.getVie() << std::endl;
+
+   	tendry.ajouterCible(&olivetti);
+   	tendry.attaquer(Attaque(MELEE, 3));
+   	std::cout << "Tendry attaque olivetti !" << std::endl; 
+
+   	std::cout << "olivetti a " << olivetti.getVie() << std::endl;
     return 0;
 }

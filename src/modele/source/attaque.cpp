@@ -17,6 +17,12 @@ Attaque::Attaque() : type(MELEE), degats(0)
 
 }
 
+// Source du constructeur paramétré
+Attaque::Attaque(Type type, int degats) : type(type), degats(degats)
+{
+
+}
+
 // Source du destructeur par défaut
 Attaque::~Attaque()
 {

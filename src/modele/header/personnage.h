@@ -11,6 +11,7 @@
 // ###################################
 // INCLUSIONS
 #include <vector>
+#include <attaque.h>
 // ###################################
 
 /**
@@ -39,6 +40,33 @@ class Personnage
 		* \brief	destructeur par défaut
 		*/
 		~Personnage();
+
+		/**
+		* \brief	baisse le nombre de points de vie du personnage
+					assure le reste à 0 si les dégâts sont trop importants
+		* \author	Tendry
+		* \version	1.0
+		* \param	quantite la quantité de vie baissée
+		*/
+		void baisserVie(int quantite);
+
+		/**
+		* \brief	le personnage, s'il a des cibles il les blesse
+					sinon il attaque dans le vent
+		* \author	Tendry
+		* \version	1.0
+		* \param	attaque l'attaque effectuée sur les cibles
+		* \details	attaque les cibles qui sont les attributs du personnage
+		*/
+		void attaquer(Attaque attaque);
+
+		/**
+		* \brief	ajoute une cible a portée de notre personnage
+		* \author	Tendry
+		* \version	1.0
+		* \param	personnage le pointeur vers la cible
+		*/
+		void ajouterCible(Personnage* personnage);
 
 		// Fonction pertinentes
 		// #########################################

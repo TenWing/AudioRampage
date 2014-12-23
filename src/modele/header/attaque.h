@@ -23,6 +23,14 @@ class Attaque
 		Attaque();
 
 		/**
+		* \brief 	construit une attaque avec des paramètres
+		* \author	Tendry
+		* \param 	type le type d'attaque
+		* \param 	degats les dégâts de l'attaque
+		*/
+		Attaque(Type type, int degats);
+
+		/**
 		* \brief	détruit une attaque
 		*/
 		~Attaque();
