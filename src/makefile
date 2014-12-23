@@ -51,9 +51,7 @@ all: 		$(EXEC)
 #Appels des sous makefiles pour build les .o puis editer les liens
 $(EXEC):	
 			@(cd $(MODEL_DIR) && $(MAKE))
-			@# @(cd $(VIEW_DIR) && $(MAKE))
 			@(cd $(CONTROLLER_DIR) && $(MAKE))
-			@# @(cd $(MAIN_DIR) && $(MAKE))
 	 		@(cd $(BUILD_DIR) && $(MAKE))
 
 #commande de nettoyage du projet (suppr les .o et executable)

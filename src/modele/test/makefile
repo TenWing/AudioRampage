@@ -27,7 +27,12 @@ INCLUDEPATH=-I ../header
 BUILD_DIR = ../../../build/source
 
 #Recherche de tous les fichiers .c a tester
-SRC = $(shell ls ../source)  
+#Cas Windows
+ifeq ($(OS),Windows_NT)
+	SRC = $(shell dir /B "..\source")
+else
+	SRC = $(shell ls ../source)  
+endif
 CMAIN = $(wildcard *.cpp)
 MAIN = $(CMAIN:.cpp=.o)
 

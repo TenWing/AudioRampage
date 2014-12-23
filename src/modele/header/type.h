@@ -18,7 +18,7 @@
 * \author	Tendry
 * \version	1.0
 */
-typedef enum Type
+enum Type
 {
 	DNB,
 	DUBSTEP,
