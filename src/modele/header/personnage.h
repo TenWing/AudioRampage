@@ -10,7 +10,7 @@
 
 // ###################################
 // INCLUSIONS
-#include <vector>
+#include <list>
 #include <attaque.h>
 // ###################################
 
@@ -68,6 +68,20 @@ class Personnage
 		*/
 		void ajouterCible(Personnage* personnage);
 
+		/**
+		* \brief	
+		*/
+		void retirerCible(Personnage* personnage);
+
+		/**
+		* \brief	indique si deux personnage sont égaux
+		* \author	Tendry
+		* \version	1.0
+		* \param	personnage l'autre personnage testé
+		* \return 	vrai si égaux, faux sinon
+		*/
+		bool equals(Personnage personnage);
+
 		// Fonction pertinentes
 		// #########################################
 		// GETTERS / SETTERS
@@ -86,7 +100,27 @@ class Personnage
 		*/
 		void setVie(int vie);
 
+		/**
+		* \brief	retourne l'identifiant du personnage
+		* \author	Tendry
+		* \return 	l'identifiant du personnage
+		*/
+		int getId();
+
+		/**
+		* \brief 	ATTENTION usage dangereux, modifie l'id du
+					personnage
+		* \author	Tendry
+		* \param	id le nouvel identifiant
+		*/
+		void setId(int id);
+
 	private:
+
+		/**
+		* \brief	l'identifiant de l'objet
+		*/
+		int id;
 
 		/**
 		* \brief 	la santé du personnage
@@ -94,13 +128,15 @@ class Personnage
 		int vie;
 
 		/**
-		* \brief 	un tableau dynamique de cibles nécessaire pour
-					une attaque sur d'autres personnages
-		* \details	utilisation d'un vecteur car on effectuera surtout 
-					des opérations d'ajout et de suppression à la fin
-					mais aussi d'accès à partir d'un indice
+		* \brief 	une liste de cibles pour les attaques
+		* \details	une liste est plus adaptée dans le cas
+					d'une suppression ou insertion en milieu de 
+					séquence, ce qui peut arriver car on ne sait
+					pas globalement la position des personnages
+					qui meurent ou sortent de la portée du personnage
+					dans la liste.
 		*/
-		std::vector<Personnage*> cibles;
+		std::list<Personnage*> cibles;
 };
 
 #endif
