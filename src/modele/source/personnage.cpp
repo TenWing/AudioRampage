@@ -66,6 +66,34 @@ void Personnage::ajouterCible(Personnage* personnage)
 	this->cibles.push_back(personnage);
 }
 
+void Personnage::retirerCible(Personnage* personnage)
+{
+	// Pas de suppression effectuée
+	bool suppression = false;
+
+	// S'il y a des cibles on fait quelque chose
+	if(!cibles.empty())
+	{
+		// Itérateur de parcours de liste
+		std::list<Personnage*>::iterator i = cibles.begin();
+
+		// Parcours de la liste jusqu'à suppression
+		while(!suppression && i != cibles.end())
+		{
+			// On regarde si le personnage à la
+			// position dans la liste est celui à suppr
+			Personnage* perso = *i;
+			if(perso->equals(*personnage))
+			{
+				cibles.erase(i);
+				suppression = true;
+			}
+			
+			i++;
+		}
+	}
+}
+
 // Source equals
 bool Personnage::equals(Personnage personnage)
 {

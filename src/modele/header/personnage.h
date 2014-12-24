@@ -18,7 +18,7 @@
 * \brief	un personnage dans le jeu peut être ou le joueur
 			ou un bot qui attaque le joueur
 * \author	Tendry
-* \version	1.0
+* \version	2.0
 */
 class Personnage
 {
@@ -69,7 +69,10 @@ class Personnage
 		void ajouterCible(Personnage* personnage);
 
 		/**
-		* \brief	
+		* \brief	Retire une cible de la lsite des cibles du personnage
+		* \author	Tendry
+		* \version	1.0
+		* \param	personnage le personnage à supprimer	
 		*/
 		void retirerCible(Personnage* personnage);
 

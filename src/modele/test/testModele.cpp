@@ -29,5 +29,7 @@ int main()
    	std::cout << "Tendry attaque olivetti !" << std::endl; 
 
    	std::cout << "olivetti a " << olivetti.getVie() << std::endl;
+
+   	tendry.retirerCible(&olivetti);
     return 0;
 }
