@@ -31,10 +31,11 @@ class Personnage
 
 		/**
 		* \brief 	construit un personage et lui définit une vie
+		* \param	id l'identifiant du personnage
 		* \param	vie la vie attribuée
 		* \author	Tendry
 		*/
-		Personnage(int vie);
+		Personnage(int id, int vie);
 
 		/**
 		* \brief	destructeur par défaut
@@ -69,7 +70,7 @@ class Personnage
 		void ajouterCible(Personnage* personnage);
 
 		/**
-		* \brief	Retire une cible de la lsite des cibles du personnage
+		* \brief	Retire une cible de la liste des cibles du personnage
 		* \author	Tendry
 		* \version	1.0
 		* \param	personnage le personnage à supprimer	

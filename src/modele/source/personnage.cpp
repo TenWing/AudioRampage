@@ -13,13 +13,14 @@
 // ###########################
 
 // Code source du constructeur
-Personnage::Personnage() : vie(0)
+Personnage::Personnage() : id(-1), vie(0)
 {
 	// Allocation liste
 	cibles = std::list<Personnage*>();
 }
 
-Personnage::Personnage(int vie) : vie(vie)
+// Source contstructeur parametré
+Personnage::Personnage(int id, int vie) : id(id), vie(vie)
 {
 	// Allocation liste
 	cibles = std::list<Personnage*>();
@@ -88,7 +89,7 @@ void Personnage::retirerCible(Personnage* personnage)
 				cibles.erase(i);
 				suppression = true;
 			}
-			
+
 			i++;
 		}
 	}

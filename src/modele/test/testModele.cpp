@@ -19,7 +19,7 @@
 int main()
 {
    	std::cout << "YOLO" << std::endl;
-   	Personnage tendry(10), olivetti(5);
+   	Personnage tendry(-1, 10), olivetti(-1, 5);
 
    	std::cout << "Tendry a " << tendry.getVie() << std::endl;
    	std::cout << "olivetti a " << olivetti.getVie() << std::endl;
