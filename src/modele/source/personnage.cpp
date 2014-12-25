@@ -137,6 +137,9 @@ Attaque* Personnage::getAttaque()
 // Source setter attaque
 void Personnage::setAttaque(Attaque* attaque)
 {
+	// On libère ce qu'il y avait avant
 	delete this->attaque;
+
+	// On change l'attaque courante
 	this->attaque = new Attaque(attaque->getType(), attaque->getDegats());
 }

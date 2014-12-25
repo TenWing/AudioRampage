@@ -41,8 +41,18 @@ void Joueur::attaqueSuivante()
 	// On continue si on a été trouvé, sinon y a une erreur quelque part
 	if(*i != 0)
 	{
-		// on passe a l'élément suivant
-		i++;
+		// on passe a l'attaque suivante
+		// la première si on est à la dernière
+		if((*i)->equals(*this->attaques[this->attaques.size()-1]))
+		{
+			i = this->attaques.begin();
+		}
+		// Sinon juste la suivante
+		else
+		{
+			i++;
+		}
+
 		// Et on l'attribue à la valeur courante
 		this->setAttaque(*i);
 	}
@@ -51,7 +61,28 @@ void Joueur::attaqueSuivante()
 // Source attaque précédente
 void Joueur::attaquePrecedente()
 {
+	// On cherche la position de l'attaque
+	std::vector<Attaque*>::iterator i = this->positionAttaque();
 
+	// On continue si on a été trouvé, sinon y a une erreur quelque part
+	if(*i != 0)
+	{
+		// on passe a l'attaque suivante
+		// la dernière si on est à la première
+		if( (*i) -> equals( *this->attaques[0] ) )
+		{
+			i = this->attaques.end();
+			i--;
+		}
+		// Sinon juste la précédente
+		else
+		{
+			i--;
+		}
+
+		// Et on l'attribue à la valeur courante
+		this->setAttaque(*i);
+	}
 }
 
 // Source getter attaques

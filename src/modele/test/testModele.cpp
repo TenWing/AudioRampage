@@ -29,7 +29,7 @@ int main()
    attaques.push_back(&dnb);
    tendry.setAttaques(attaques);
    tendry.setAttaque(&melee);
-   tendry.attaqueSuivante();
+   tendry.attaquePrecedente();
    tendry.ajouterCible(&olivetti);
    tendry.attaquer();
 
