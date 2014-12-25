@@ -33,7 +33,15 @@ class Attaque
 		/**
 		* \brief	détruit une attaque
 		*/
-		~Attaque();
+		virtual ~Attaque();
+
+		/**
+		* \brief	indique si deux attaques sont égales
+		* \author	Tendry
+		* \param 	attaque l'attaque comparée
+		* \return 	vrai ou faux
+		*/
+		bool equals(Attaque attaque);
 
 		// Fonction pertinentes
 		// #########################################

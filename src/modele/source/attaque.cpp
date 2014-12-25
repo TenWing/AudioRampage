@@ -29,6 +29,16 @@ Attaque::~Attaque()
 
 }
 
+// Source du comparateur
+bool Attaque::equals(Attaque attaque)
+{
+	if(attaque.type == this->type 
+		&& attaque.degats == this->degats)
+		return true;
+
+	return false;
+}
+
 // Source de l'accesseur au type
 Type Attaque::getType()
 {

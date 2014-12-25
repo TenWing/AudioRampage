@@ -13,14 +13,14 @@
 // ###########################
 
 // Code source du constructeur
-Personnage::Personnage() : id(-1), vie(0)
+Personnage::Personnage() : id(-1), vie(0), attaque(0)
 {
 	// Allocation liste
 	cibles = std::list<Personnage*>();
 }
 
 // Source contstructeur parametré
-Personnage::Personnage(int id, int vie) : id(id), vie(vie)
+Personnage::Personnage(int id, int vie) : id(id), vie(vie), attaque(0)
 {
 	// Allocation liste
 	cibles = std::list<Personnage*>();
@@ -29,8 +29,7 @@ Personnage::Personnage(int id, int vie) : id(id), vie(vie)
 // Code source du destructeur par défaut
 Personnage::~Personnage()
 {
-	// On vide la liste de cibles
-	this->cibles.clear();
+	delete this->attaque;
 }
 
 // Source de baisserVie
@@ -43,7 +42,7 @@ void Personnage::baisserVie(int quantite)
 }
 
 // Source d'une attaque d'un personnage
-void Personnage::attaquer(Attaque attaque)
+void Personnage::attaquer()
 {
 	// S'il y a des cibles on fait quelque chose
 	if(!cibles.empty())
@@ -56,7 +55,7 @@ void Personnage::attaquer(Attaque attaque)
 		{
 			// On récupère la cible et on la blesse
 			Personnage* cible = *i;
-			cible->baisserVie(attaque.getDegats());
+			cible->baisserVie(this->attaque->getDegats());
 		}
 	}
 }
@@ -127,4 +126,17 @@ int Personnage::getId()
 void Personnage::setId(int id)
 {
 	this->id = id;
+}
+
+// Source getter attaque
+Attaque* Personnage::getAttaque()
+{
+	return attaque;
+}
+
+// Source setter attaque
+void Personnage::setAttaque(Attaque* attaque)
+{
+	delete this->attaque;
+	this->attaque = new Attaque(attaque->getType(), attaque->getDegats());
 }

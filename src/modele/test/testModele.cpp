@@ -8,7 +8,7 @@
 // ############################
 // INCLUSIONS
 #include <iostream>
-#include <modele.h>
+#include <joueur.h>
 // ############################
 
 /**
@@ -18,18 +18,22 @@
 */
 int main()
 {
-   	std::cout << "YOLO" << std::endl;
-   	Personnage tendry(-1, 10), olivetti(-1, 5);
+   Joueur tendry(-1, 10);
+   Personnage olivetti(-2, 5);
 
-   	std::cout << "Tendry a " << tendry.getVie() << std::endl;
-   	std::cout << "olivetti a " << olivetti.getVie() << std::endl;
+   Attaque melee(MELEE, 3);
+   Attaque dnb(DNB, 5);
 
-   	tendry.ajouterCible(&olivetti);
-   	tendry.attaquer(Attaque(MELEE, 3));
-   	std::cout << "Tendry attaque olivetti !" << std::endl; 
+   std::vector<Attaque*> attaques;
+   attaques.push_back(&melee);
+   attaques.push_back(&dnb);
+   tendry.setAttaques(attaques);
+   tendry.setAttaque(&melee);
+   tendry.attaqueSuivante();
+   tendry.ajouterCible(&olivetti);
+   tendry.attaquer();
 
-   	std::cout << "olivetti a " << olivetti.getVie() << std::endl;
+   std::cout << olivetti.getVie() << std::endl;
 
-   	tendry.retirerCible(&olivetti);
-    return 0;
+   return 0;
 }

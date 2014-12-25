@@ -40,7 +40,7 @@ class Personnage
 		/**
 		* \brief	destructeur par défaut
 		*/
-		~Personnage();
+		virtual ~Personnage();
 
 		/**
 		* \brief	baisse le nombre de points de vie du personnage
@@ -56,10 +56,9 @@ class Personnage
 					sinon il attaque dans le vent
 		* \author	Tendry
 		* \version	1.0
-		* \param	attaque l'attaque effectuée sur les cibles
 		* \details	attaque les cibles qui sont les attributs du personnage
 		*/
-		void attaquer(Attaque attaque);
+		void attaquer();
 
 		/**
 		* \brief	ajoute une cible a portée de notre personnage
@@ -119,7 +118,21 @@ class Personnage
 		*/
 		void setId(int id);
 
-	private:
+		/**
+		* \brief	getter de l'attaque courante
+		* \return 	pointeur vers l'attaque courante
+		* \author	Tendry
+		*/
+		Attaque* getAttaque();
+
+		/**
+		* \brief 	setter de l'attaque courante
+		* \author	Tendry
+		* \param	attaque la nouvelle attaque
+		*/
+		void setAttaque(Attaque* attaque);
+
+	protected:
 
 		/**
 		* \brief	l'identifiant de l'objet
@@ -141,6 +154,11 @@ class Personnage
 					dans la liste.
 		*/
 		std::list<Personnage*> cibles;
+
+		/**
+		* \brief	l'attaque qu'effectue le personnage
+		*/
+		Attaque* attaque;
 };
 
 #endif

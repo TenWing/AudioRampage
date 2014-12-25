@@ -30,7 +30,7 @@ class Score
 		/**
 		* \brief	Destructeur de l'objet
 		*/
-		~Score();
+		virtual ~Score();
 
 		// Fonction pertinentes
 		// #########################################
