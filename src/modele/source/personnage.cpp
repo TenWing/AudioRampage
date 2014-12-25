@@ -96,6 +96,17 @@ void Personnage::retirerCible(Personnage* personnage)
 	}
 }
 
+/* source copie
+Personnage Personnage::copie(int new_id)
+{
+	std::cout << "this call? " << std::endl;
+	Personnage copie(new_id, this->vie);
+
+	copie.setAttaque(this->attaque);
+
+	return copie;
+}*/
+
 // Source equals
 bool Personnage::equals(Personnage personnage)
 {

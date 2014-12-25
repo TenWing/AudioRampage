@@ -8,8 +8,7 @@
 // ############################
 // INCLUSIONS
 #include <iostream>
-#include <joueur.h>
-#include <ennemi.h>
+#include <modele.h>
 // ############################
 
 /**
@@ -19,25 +18,9 @@
 */
 int main()
 {
-   Joueur tendry(-1, 10);
-   Ennemi olivetti(-2, 5, DNB);
-   Personnage dummy(-3, 10);
-
-   Attaque melee(MELEE, 3);
-   Attaque dnb(DNB, 5);
-
-   std::vector<Attaque*> attaques;
-   attaques.push_back(&melee);
-   attaques.push_back(&dnb);
-   tendry.setAttaques(attaques);
-   tendry.setAttaque(&melee);
-   // tendry.attaquePrecedente();
-   tendry.ajouterCible(&olivetti);
-   tendry.ajouterCible(&dummy);
-   tendry.attaquer();
-
-   std::cout << olivetti.getVie() << std::endl;
-   std::cout << dummy.getVie() << std::endl;
+   Modele modele = Modele();
+   std::cout << modele.getModelesEnnemi().size() << std::endl;
+   std::cout << modele.getModelesEnnemi()[0]->getAttaque()->getDegats() << std::endl;
 
    return 0;
 }

@@ -10,9 +10,9 @@
 
 // ############################
 // INCLUSIONS
-#include <joueur>
-#include <personnage>
-#include <score>
+#include <joueur.h>
+#include <score.h>
+#include <ennemi.h>
 #include <list>
 #include <vector>
 // ############################
@@ -36,9 +36,65 @@ class Modele
 		/**
 		* \brief	Destructeur par défaut
 		*/
-		~Modele();
+		virtual ~Modele();
+
+		/**
+		* \brief	crée un ennemi dans la partie
+					en se basant sur un modele choisit
+					au hasard
+		* \author	Tendry
+		*/
+		void apparitionEnnemi();
+
+		// Fonction pertinentes
+		// #########################################
+		// GETTERS / SETTERS
+
+		/**
+		* \brief 	getter base_id
+		* \return 	le base_id du modèle
+		* \details 	a appeler à chaque accès car 
+					s'occupe de changer la valeur de base_id
+		*/
+		int getBase_id();
+
+		/**
+		* \brief	getter du score
+		* \return 	le score du modele
+		*/
+		Score getScore();
+
+		/**
+		* \brief	setter du score
+		* \param 	score le nouveau score
+		*/
+		void setScore(Score score);
+
+		/**
+		* \brief 	getter de la liste des ennemis en jeu
+		* \return 	l'attribut ennemi du modele
+		*/
+		std::list<Ennemi*> getEnnemis();
+
+		/**
+		* \brief 	getter du joueur de la partie
+		* \return 	le joueur du modèle
+		*/
+		Joueur getJoueur();
+
+		/**
+		* \brief 	getter d la liste des modeles d'ennemis
+		* \return 	un vecteur d'Ennemi
+		*/
+		std::vector<Ennemi*> getModelesEnnemi();
 
 	private:
+
+		/**
+		* \brief	attribut qui donnes les ID
+					aux personnages créés
+		*/
+		int base_id;
 
 		/**
 		* \brief	le score de la partie
@@ -49,7 +105,7 @@ class Modele
 		* \brief	l'ensemble des NPC ennemis
 					en jeu
 		*/
-		std::list<Ennemi> ennemis;
+		std::list<Ennemi*> ennemis;
 
 		/**
 		* \brief	le joueur de la partie
@@ -60,7 +116,7 @@ class Modele
 		* \brief	une collection de tous les modèles
 					d'ennemis possible de générer
 		*/
-		std::vector<Ennemi> modelesEnnemi;
+		std::vector<Ennemi*> modelesEnnemi;
 };
 
 #endif

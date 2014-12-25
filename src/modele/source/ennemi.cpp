@@ -26,14 +26,15 @@ Ennemi::Ennemi(int id, int vie, Type type) : Personnage(id, vie), type(type)
 // Source destructeur d'objet
 Ennemi::~Ennemi()
 {
-
+	
 }
 
 // Source baisser vie redéfinie
 void Ennemi::baisserVie(Attaque attaque)
 {
-	// Si les types sont égaux
-	if(attaque.getType() == this->type)
+	// Si les types sont égaux ou dégâts mélee
+	if(attaque.getType() == this->type
+		|| attaque.getType() == MELEE)
 	{
 		// On inflige les dégats normalement
 		Personnage::baisserVie(attaque);
