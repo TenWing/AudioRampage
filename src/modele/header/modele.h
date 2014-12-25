@@ -10,7 +10,11 @@
 
 // ############################
 // INCLUSIONS
-#include <personnage.h>
+#include <joueur>
+#include <personnage>
+#include <score>
+#include <list>
+#include <vector>
 // ############################
 
 /**
@@ -33,7 +37,30 @@ class Modele
 		* \brief	Destructeur par défaut
 		*/
 		~Modele();
-};
 
+	private:
+
+		/**
+		* \brief	le score de la partie
+		*/
+		Score score;
+
+		/**
+		* \brief	l'ensemble des NPC ennemis
+					en jeu
+		*/
+		std::list<Ennemi> ennemis;
+
+		/**
+		* \brief	le joueur de la partie
+		*/
+		Joueur joueur;
+
+		/**
+		* \brief	une collection de tous les modèles
+					d'ennemis possible de générer
+		*/
+		std::vector<Ennemi> modelesEnnemi;
+};
 
 #endif

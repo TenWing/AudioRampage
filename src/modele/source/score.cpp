@@ -22,6 +22,12 @@ Score::~Score()
 
 }
 
+// Source augmenter points
+void Score::augmenterPoints(int montant)
+{
+	this->points += montant;
+}
+
 // Source getter points
 int Score::getPoints()
 {

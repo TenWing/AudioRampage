@@ -32,6 +32,13 @@ class Score
 		*/
 		virtual ~Score();
 
+		/**
+		* \brief	Augmente les points de score
+		* \author	Tendry
+		* \param	montant le montant de score à augmenter
+		*/
+		void augmenterPoints(int montant);
+
 		// Fonction pertinentes
 		// #########################################
 		// GETTERS / SETTERS

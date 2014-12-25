@@ -1,5 +1,5 @@
 /**
-* \file     testModele.c
+* \file     testModele.cpp
 * \author   Tendry
 * \date     20 Décembre 2014
 * \brief    Point de départ du programme de test du modèle
