@@ -7,6 +7,7 @@
 
 // ###########################
 // INCLUSIONS
+#include <iostream>
 #include <personnage.h>
 #include <attaque.h>
 #include <list>
@@ -33,8 +34,9 @@ Personnage::~Personnage()
 }
 
 // Source de baisserVie
-void Personnage::baisserVie(int quantite)
+void Personnage::baisserVie(Attaque attaque)
 {
+	int quantite = attaque.getDegats();
 	this->vie -= quantite;
 
 	if(this->vie < 0)
@@ -45,7 +47,8 @@ void Personnage::baisserVie(int quantite)
 void Personnage::attaquer()
 {
 	// S'il y a des cibles on fait quelque chose
-	if(!cibles.empty())
+	// S'il y a au moins une attaque aussi
+	if(!cibles.empty() && this->attaque != 0)
 	{
 		// Itérateur de parcours de liste
 		std::list<Personnage*>::iterator i;
@@ -54,8 +57,7 @@ void Personnage::attaquer()
 		for(i = cibles.begin(); i != cibles.end(); i++)
 		{
 			// On récupère la cible et on la blesse
-			Personnage* cible = *i;
-			cible->baisserVie(this->attaque->getDegats());
+			(*i)->baisserVie(*this->attaque);
 		}
 	}
 }

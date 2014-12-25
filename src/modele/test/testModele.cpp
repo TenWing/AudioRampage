@@ -9,6 +9,7 @@
 // INCLUSIONS
 #include <iostream>
 #include <joueur.h>
+#include <ennemi.h>
 // ############################
 
 /**
@@ -19,7 +20,8 @@
 int main()
 {
    Joueur tendry(-1, 10);
-   Personnage olivetti(-2, 5);
+   Ennemi olivetti(-2, 5, DNB);
+   Personnage dummy(-3, 10);
 
    Attaque melee(MELEE, 3);
    Attaque dnb(DNB, 5);
@@ -29,11 +31,13 @@ int main()
    attaques.push_back(&dnb);
    tendry.setAttaques(attaques);
    tendry.setAttaque(&melee);
-   tendry.attaquePrecedente();
+   // tendry.attaquePrecedente();
    tendry.ajouterCible(&olivetti);
+   tendry.ajouterCible(&dummy);
    tendry.attaquer();
 
    std::cout << olivetti.getVie() << std::endl;
+   std::cout << dummy.getVie() << std::endl;
 
    return 0;
 }

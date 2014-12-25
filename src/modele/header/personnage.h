@@ -2,7 +2,7 @@
 * \file		personnage.h
 * \brief	Définition de l'objet Personnage
 * \author	Tendry
-* \date		20 Décembre 2014
+* \date		25 Décembre 2014
 */
 
 #ifndef PERSONNAGE_H
@@ -47,9 +47,9 @@ class Personnage
 					assure le reste à 0 si les dégâts sont trop importants
 		* \author	Tendry
 		* \version	1.0
-		* \param	quantite la quantité de vie baissée
+		* \param	attaque l'attaque qui baisse la vie
 		*/
-		void baisserVie(int quantite);
+		virtual void baisserVie(Attaque attaque);
 
 		/**
 		* \brief	le personnage, s'il a des cibles il les blesse
