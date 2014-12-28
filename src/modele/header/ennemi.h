@@ -50,6 +50,16 @@ class Ennemi : public Personnage
 		*/
 		void baisserVie(Attaque attaque);
 
+		/**
+		* \brief 	surcharge opérateur de copie
+		* \author	Tendry
+		* \see 		Personnage
+		* \param 	new_id le nouvel id
+		* \return 	une copie de type Ennemi
+		* \version 	1.0
+		*/
+		Personnage* copie(int new_id);
+
 		// Fonction pertinentes
 		// #########################################
 		// GETTERS / SETTERS

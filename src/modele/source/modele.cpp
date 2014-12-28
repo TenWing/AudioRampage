@@ -16,40 +16,33 @@
 Modele::Modele() : base_id(-1)
 {
 	// Le joueur a 100 points de vie
-	joueur = Joueur(getBase_id(), 100);
+	// joueur = Joueur(getBase_id(), 100);
 
 	// Allocations
 	score = Score();
-	ennemis = std::list<Ennemi*>();
-	modelesEnnemi = std::vector<Ennemi*>();
-
- 	// On ajoute les ennemis 
+	ennemis = std::list<Personnage>();
+	modelesEnnemi = std::vector<Personnage>();
+	
+	// On ajoute les ennemis 
     // possibles d'apparaître dans le jeu
-    Ennemi* sbireDNB = new Ennemi(getBase_id(), 10, DNB);
+    Ennemi sbireDNB = Ennemi(getBase_id(), 10, DNB);
     Attaque dnb = Attaque(DNB, 10);
-    sbireDNB->setAttaque(&dnb);
-
     modelesEnnemi.push_back(sbireDNB);
+    modelesEnnemi[0].setAttaque(dnb);
 }
 
 // Source du destructeur du modele
 Modele::~Modele()
 {
-	// parcours de la liste des modeles
-	std::vector<Ennemi*>::iterator i;
 
-	// on désalloue chaque modele qu'on a précédemment
-	// alloué à la main
-	for(i = modelesEnnemi.begin(); i != modelesEnnemi.end(); i++)
-	{
-		delete *i;
-	}
 }
 
 // source apparition ennemi
 void Modele::apparitionEnnemi()
 {
-
+	// Création d'un chiffre de sélection au hasard
+	// srand(time(NULL));
+	// int offset = rand() % this->modelesEnnemi.size();
 }
 
 // Source du getter base_id
@@ -75,7 +68,7 @@ void Modele::setScore(Score score)
 }
 
 // Source getter ennemis 
-std::list<Ennemi*> Modele::getEnnemis()
+std::list<Personnage> Modele::getEnnemis()
 {
 	return ennemis;
 }
@@ -87,7 +80,7 @@ Joueur Modele::getJoueur()
 }
 
 // Source getter modelesEnnemi
-std::vector<Ennemi*> Modele::getModelesEnnemi()
+std::vector<Personnage> Modele::getModelesEnnemi()
 {
 	return modelesEnnemi;
 }

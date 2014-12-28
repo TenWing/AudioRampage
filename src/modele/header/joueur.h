@@ -63,14 +63,7 @@ class Joueur : public Personnage
 		* \return	un vecteur d'attaque
 		* \author	Tendry
 		*/
-		std::vector<Attaque*> getAttaques();
-
-		/**
-		* \brief	setter des attaques
-		* \param	attaques la nouvelle liste d'attaques
-		* \author	Tendry
-		*/
-		void setAttaques(std::vector<Attaque*> attaques);
+		std::vector<Attaque> getAttaques();
 
 	private:
 
@@ -83,7 +76,7 @@ class Joueur : public Personnage
 					à la position de l'attaque courante
 					dans la liste
 		*/
-		std::vector<Attaque*>::iterator positionAttaque();
+		std::vector<Attaque>::iterator positionAttaque();
 
 		/**
 		* \brief	une liste d'attaques possibles
@@ -92,7 +85,7 @@ class Joueur : public Personnage
 					cette-fois ci on choisit un vecteur car pas de 
 					suppression en milieu de séquence
 		*/
-		std::vector<Attaque*> attaques;
+		std::vector<Attaque> attaques;
 };
 
 #endif

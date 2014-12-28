@@ -85,6 +85,15 @@ class Personnage
 		*/
 		bool equals(Personnage personnage);
 
+		/**
+		* \brief	copie le personnage courant
+		* \author	Tendry
+		* \version	1.0
+		* \param 	new_id le nouvel identifiant de la nouvelle instance
+		* \return 	la copie du personnage courant (nouvelle instance)
+		*/
+		virtual Personnage* copie(int new_id);
+
 		// Fonction pertinentes
 		// #########################################
 		// GETTERS / SETTERS
@@ -130,7 +139,7 @@ class Personnage
 		* \author	Tendry
 		* \param	attaque la nouvelle attaque
 		*/
-		void setAttaque(Attaque* attaque);
+		void setAttaque(Attaque attaque);
 
 	protected:
 

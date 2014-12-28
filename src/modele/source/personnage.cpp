@@ -48,7 +48,7 @@ void Personnage::attaquer()
 {
 	// S'il y a des cibles on fait quelque chose
 	// S'il y a au moins une attaque aussi
-	if(!cibles.empty() && this->attaque != 0)
+	if(!cibles.empty())
 	{
 		// Itérateur de parcours de liste
 		std::list<Personnage*>::iterator i;
@@ -96,16 +96,16 @@ void Personnage::retirerCible(Personnage* personnage)
 	}
 }
 
-/* source copie
-Personnage Personnage::copie(int new_id)
+// source copie
+Personnage* Personnage::copie(int new_id)
 {
-	std::cout << "this call? " << std::endl;
-	Personnage copie(new_id, this->vie);
-
-	copie.setAttaque(this->attaque);
+	Personnage* copie = new Personnage(new_id, this->vie);
+	/*
+	Attaque* new_attaque = new Attaque(this->attaque->getType(), this->attaque->getDegats());
+	copie->setAttaque(new_attaque);*/
 
 	return copie;
-}*/
+}
 
 // Source equals
 bool Personnage::equals(Personnage personnage)
@@ -148,11 +148,11 @@ Attaque* Personnage::getAttaque()
 }
 
 // Source setter attaque
-void Personnage::setAttaque(Attaque* attaque)
+void Personnage::setAttaque(Attaque attaque)
 {
-	// On libère ce qu'il y avait avant
+	// suppression de l'ancienne attaque
 	delete this->attaque;
 
-	// On change l'attaque courante
-	this->attaque = new Attaque(attaque->getType(), attaque->getDegats());
+	// On change l'attaque courante par un pointeur dynamique
+	this->attaque = new Attaque(attaque.getType(), attaque.getDegats());
 }

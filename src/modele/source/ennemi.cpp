@@ -41,6 +41,16 @@ void Ennemi::baisserVie(Attaque attaque)
 	}
 }
 
+// Source copie
+Personnage* Ennemi::copie(int new_id)
+{
+	Ennemi* copie = new Ennemi(new_id, this->vie, this->type);
+	/*Attaque* new_attaque = new Attaque(this->attaque->getType(), this->attaque->getDegats());
+	copie->setAttaque(new_attaque);*/
+
+	return copie;
+}
+
 // Source getter type
 Type Ennemi::getType()
 {

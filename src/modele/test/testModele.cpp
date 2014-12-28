@@ -19,8 +19,5 @@
 int main()
 {
    Modele modele = Modele();
-   std::cout << modele.getModelesEnnemi().size() << std::endl;
-   std::cout << modele.getModelesEnnemi()[0]->getAttaque()->getDegats() << std::endl;
-
    return 0;
 }
