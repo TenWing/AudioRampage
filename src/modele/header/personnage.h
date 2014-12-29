@@ -11,6 +11,7 @@
 // ###################################
 // INCLUSIONS
 #include <list>
+#include <cible.h>
 #include <attaque.h>
 // ###################################
 
@@ -64,17 +65,17 @@ class Personnage
 		* \brief	ajoute une cible a portée de notre personnage
 		* \author	Tendry
 		* \version	1.0
-		* \param	personnage le pointeur vers la cible
+		* \param	personnage la cible sous forme de personnage
 		*/
-		void ajouterCible(Personnage* personnage);
+		void ajouterCible(Personnage personnage);
 
 		/**
 		* \brief	Retire une cible de la liste des cibles du personnage
 		* \author	Tendry
 		* \version	1.0
-		* \param	personnage le personnage à supprimer	
+		* \param	personnage le personnage indiquant la cible à supprimer	
 		*/
-		void retirerCible(Personnage* personnage);
+		void retirerCible(Personnage personnage);
 
 		/**
 		* \brief	indique si deux personnage sont égaux
@@ -139,7 +140,7 @@ class Personnage
 		* \author	Tendry
 		* \param	attaque la nouvelle attaque
 		*/
-		void setAttaque(Attaque attaque);
+		void setAttaque(Attaque* attaque);
 
 	protected:
 
@@ -162,7 +163,7 @@ class Personnage
 					qui meurent ou sortent de la portée du personnage
 					dans la liste.
 		*/
-		std::list<Personnage*> cibles;
+		std::list<Cible> cibles;
 
 		/**
 		* \brief	l'attaque qu'effectue le personnage

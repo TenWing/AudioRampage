@@ -1,5 +1,5 @@
 /**
-* \file		cpp
+* \file		modele.cpp
 * \brief	code source du module "Modele" du MVC
 * \author	Tendry
 * \date		20 Décembre 2014
@@ -23,12 +23,13 @@ Modele::Modele() : base_id(-1)
 	ennemis = std::list<Personnage>();
 	modelesEnnemi = std::vector<Personnage>();
 	
+	/*
 	// On ajoute les ennemis 
     // possibles d'apparaître dans le jeu
     Ennemi sbireDNB = Ennemi(getBase_id(), 10, DNB);
     Attaque dnb = Attaque(DNB, 10);
     modelesEnnemi.push_back(sbireDNB);
-    modelesEnnemi[0].setAttaque(dnb);
+    modelesEnnemi[0].setAttaque(dnb);*/
 }
 
 // Source du destructeur du modele

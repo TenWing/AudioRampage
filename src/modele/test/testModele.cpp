@@ -18,6 +18,15 @@
 */
 int main()
 {
-   Modele modele = Modele();
-   return 0;
+	Joueur* dummy = new Joueur(-1, 10);
+	Personnage* yummy = new Personnage(-2, 5);
+
+	dummy->ajouterCible(*yummy);
+	dummy->attaquer();
+	dummy->retirerCible(*yummy);
+
+	delete dummy;
+	delete yummy;
+
+	return 0;
 }

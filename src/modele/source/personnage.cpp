@@ -17,14 +17,14 @@
 Personnage::Personnage() : id(-1), vie(0), attaque(0)
 {
 	// Allocation liste
-	cibles = std::list<Personnage*>();
+	cibles = std::list<Cible>();
 }
 
 // Source contstructeur parametré
 Personnage::Personnage(int id, int vie) : id(id), vie(vie), attaque(0)
 {
 	// Allocation liste
-	cibles = std::list<Personnage*>();
+	cibles = std::list<Cible>();
 }
 
 // Code source du destructeur par défaut
@@ -48,27 +48,28 @@ void Personnage::attaquer()
 {
 	// S'il y a des cibles on fait quelque chose
 	// S'il y a au moins une attaque aussi
-	if(!cibles.empty())
+	if(!cibles.empty() && this->attaque != 0)
 	{
 		// Itérateur de parcours de liste
-		std::list<Personnage*>::iterator i;
+		std::list<Cible>::iterator i;
 
 		// Parcours de toutes les cibles pour les endommager
 		for(i = cibles.begin(); i != cibles.end(); i++)
 		{
 			// On récupère la cible et on la blesse
-			(*i)->baisserVie(*this->attaque);
+			(*i).getValeur()->baisserVie(*this->attaque);
 		}
 	}
 }
 
 // source ajouterCible
-void Personnage::ajouterCible(Personnage* personnage)
+void Personnage::ajouterCible(Personnage personnage)
 {
-	this->cibles.push_back(personnage);
+	Cible cible = Cible(&personnage);
+	this->cibles.push_back(cible);
 }
 
-void Personnage::retirerCible(Personnage* personnage)
+void Personnage::retirerCible(Personnage personnage)
 {
 	// Pas de suppression effectuée
 	bool suppression = false;
@@ -77,21 +78,22 @@ void Personnage::retirerCible(Personnage* personnage)
 	if(!cibles.empty())
 	{
 		// Itérateur de parcours de liste
-		std::list<Personnage*>::iterator i = cibles.begin();
+		std::list<Cible>::iterator i = cibles.begin();
 
 		// Parcours de la liste jusqu'à suppression
 		while(!suppression && i != cibles.end())
 		{
 			// On regarde si le personnage à la
 			// position dans la liste est celui à suppr
-			Personnage* perso = *i;
-			if(perso->equals(*personnage))
+			Cible perso = *i;
+			if(perso.getValeur()->equals(personnage))
 			{
+				std::cout << (*i).getValeur() << std::endl;
 				cibles.erase(i);
 				suppression = true;
 			}
-
-			i++;
+			else
+				i++;
 		}
 	}
 }
@@ -148,11 +150,11 @@ Attaque* Personnage::getAttaque()
 }
 
 // Source setter attaque
-void Personnage::setAttaque(Attaque attaque)
+void Personnage::setAttaque(Attaque* attaque)
 {
 	// suppression de l'ancienne attaque
 	delete this->attaque;
 
 	// On change l'attaque courante par un pointeur dynamique
-	this->attaque = new Attaque(attaque.getType(), attaque.getDegats());
+	this->attaque = attaque;
 }
