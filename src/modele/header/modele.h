@@ -74,19 +74,19 @@ class Modele
 		* \brief 	getter de la liste des ennemis en jeu
 		* \return 	l'attribut ennemi du modele
 		*/
-		std::list<Personnage> getEnnemis();
+		std::list<Personnage*> getEnnemis();
 
 		/**
 		* \brief 	getter du joueur de la partie
 		* \return 	le joueur du modèle
 		*/
-		Joueur getJoueur();
+		Joueur* getJoueur();
 
 		/**
 		* \brief 	getter d la liste des modeles d'ennemis
 		* \return 	un vecteur d'Ennemi
 		*/
-		std::vector<Personnage> getModelesEnnemi();
+		std::vector<Personnage*> getModelesEnnemi();
 
 	private:
 
@@ -105,18 +105,18 @@ class Modele
 		* \brief	l'ensemble des NPC ennemis
 					en jeu
 		*/
-		std::list<Personnage> ennemis;
+		std::list<Personnage*> ennemis;
 
 		/**
 		* \brief	le joueur de la partie
 		*/
-		Joueur joueur;
+		Joueur* joueur;
 
 		/**
 		* \brief	une collection de tous les modèles
 					d'ennemis possible de générer
 		*/
-		std::vector<Personnage> modelesEnnemi;
+		std::vector<Personnage*> modelesEnnemi;
 };
 
 #endif

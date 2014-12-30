@@ -14,14 +14,14 @@
 // ###########################
 
 // Code source du constructeur
-Personnage::Personnage() : id(-1), vie(0), attaque(0)
+Personnage::Personnage() : id(-1), vie(0), attaque()
 {
 	// Allocation liste
 	cibles = std::list<Cible>();
 }
 
 // Source contstructeur parametré
-Personnage::Personnage(int id, int vie) : id(id), vie(vie), attaque(0)
+Personnage::Personnage(int id, int vie) : id(id), vie(vie), attaque()
 {
 	// Allocation liste
 	cibles = std::list<Cible>();
@@ -30,7 +30,7 @@ Personnage::Personnage(int id, int vie) : id(id), vie(vie), attaque(0)
 // Code source du destructeur par défaut
 Personnage::~Personnage()
 {
-	delete this->attaque;
+	
 }
 
 // Source de baisserVie
@@ -48,7 +48,7 @@ void Personnage::attaquer()
 {
 	// S'il y a des cibles on fait quelque chose
 	// S'il y a au moins une attaque aussi
-	if(!cibles.empty() && this->attaque != 0)
+	if(!cibles.empty())
 	{
 		// Itérateur de parcours de liste
 		std::list<Cible>::iterator i;
@@ -57,19 +57,19 @@ void Personnage::attaquer()
 		for(i = cibles.begin(); i != cibles.end(); i++)
 		{
 			// On récupère la cible et on la blesse
-			(*i).getValeur()->baisserVie(*this->attaque);
+			(*i).getValeur()->baisserVie(this->attaque);
 		}
 	}
 }
 
 // source ajouterCible
-void Personnage::ajouterCible(Personnage personnage)
+void Personnage::ajouterCible(Personnage* personnage)
 {
-	Cible cible = Cible(&personnage);
+	Cible cible = Cible(personnage);
 	this->cibles.push_back(cible);
 }
 
-void Personnage::retirerCible(Personnage personnage)
+void Personnage::retirerCible(Personnage* personnage)
 {
 	// Pas de suppression effectuée
 	bool suppression = false;
@@ -86,7 +86,7 @@ void Personnage::retirerCible(Personnage personnage)
 			// On regarde si le personnage à la
 			// position dans la liste est celui à suppr
 			Cible perso = *i;
-			if(perso.getValeur()->equals(personnage))
+			if(perso.getValeur()->equals(*personnage))
 			{
 				std::cout << (*i).getValeur() << std::endl;
 				cibles.erase(i);
@@ -144,17 +144,14 @@ void Personnage::setId(int id)
 }
 
 // Source getter attaque
-Attaque* Personnage::getAttaque()
+Attaque Personnage::getAttaque()
 {
 	return attaque;
 }
 
 // Source setter attaque
-void Personnage::setAttaque(Attaque* attaque)
+void Personnage::setAttaque(Attaque attaque)
 {
-	// suppression de l'ancienne attaque
-	delete this->attaque;
-
 	// On change l'attaque courante par un pointeur dynamique
 	this->attaque = attaque;
 }

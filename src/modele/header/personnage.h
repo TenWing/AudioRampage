@@ -67,7 +67,7 @@ class Personnage
 		* \version	1.0
 		* \param	personnage la cible sous forme de personnage
 		*/
-		void ajouterCible(Personnage personnage);
+		void ajouterCible(Personnage* personnage);
 
 		/**
 		* \brief	Retire une cible de la liste des cibles du personnage
@@ -75,7 +75,7 @@ class Personnage
 		* \version	1.0
 		* \param	personnage le personnage indiquant la cible à supprimer	
 		*/
-		void retirerCible(Personnage personnage);
+		void retirerCible(Personnage* personnage);
 
 		/**
 		* \brief	indique si deux personnage sont égaux
@@ -133,14 +133,14 @@ class Personnage
 		* \return 	pointeur vers l'attaque courante
 		* \author	Tendry
 		*/
-		Attaque* getAttaque();
+		Attaque getAttaque();
 
 		/**
 		* \brief 	setter de l'attaque courante
 		* \author	Tendry
 		* \param	attaque la nouvelle attaque
 		*/
-		void setAttaque(Attaque* attaque);
+		void setAttaque(Attaque attaque);
 
 	protected:
 
@@ -168,7 +168,7 @@ class Personnage
 		/**
 		* \brief	l'attaque qu'effectue le personnage
 		*/
-		Attaque* attaque;
+		Attaque attaque;
 };
 
 #endif

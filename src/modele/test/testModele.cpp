@@ -18,15 +18,19 @@
 */
 int main()
 {
-	Joueur* dummy = new Joueur(-1, 10);
-	Personnage* yummy = new Personnage(-2, 5);
+	Joueur* joueur = new Joueur(-1, 100);
 
-	dummy->ajouterCible(*yummy);
-	dummy->attaquer();
-	dummy->retirerCible(*yummy);
+	Attaque dnb = Attaque(DNB, 5);
+	Attaque melee = Attaque(MELEE, 2);
+	joueur->getAttaques()->push_back(dnb);
+	joueur->getAttaques()->push_back(melee);
+	joueur->setAttaque((*joueur->getAttaques())[0]);
 
-	delete dummy;
-	delete yummy;
+	Ennemi* ennemi = new Ennemi(-2, 10, DNB);
+	joueur->ajouterCible(ennemi);
+	joueur->retirerCible(ennemi);
 
+	delete joueur;
+	delete ennemi;
 	return 0;
 }
